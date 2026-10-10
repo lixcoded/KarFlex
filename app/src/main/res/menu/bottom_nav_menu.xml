@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_browse"
+        android:icon="@drawable/ic_car"
+        android:title="@string/nav_browse" />
+
+    <item
+        android:id="@+id/nav_my_rental"
+        android:icon="@drawable/ic_key"
+        android:title="@string/nav_my_rental" />
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_person"
+        android:title="@string/nav_profile" />
+
+</menu>

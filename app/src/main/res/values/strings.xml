@@ -1,3 +1,101 @@
 <resources>
     <string name="app_name">KarFlex</string>
+    <string name="brand_wordmark">KarFlex</string>
+    <string name="brand_tagline">DRIVE YOUR WAY</string>
+    <string name="cd_logo">KarFlex logo</string>
+    <string name="action_back">Back</string>
+
+    <!-- Login -->
+    <string name="login_title">Welcome back.</string>
+    <string name="login_subtitle">Sign in to continue to KarFlex.</string>
+    <string name="label_username">USERNAME</string>
+    <string name="label_password">PASSWORD</string>
+    <string name="label_phone">PHONE NUMBER</string>
+    <string name="hint_username">Enter your username</string>
+    <string name="hint_password">Enter your password</string>
+    <string name="action_login">Log In</string>
+    <string name="login_register_prompt">Don\'t have an account? <b><font fgcolor="#FFFFFFFF">Register here!</font></b></string>
+
+    <!-- Register -->
+    <string name="register_title">Create account.</string>
+    <string name="register_subtitle">Join KarFlex and start your next ride.</string>
+    <string name="hint_register_username">Choose a username</string>
+    <string name="hint_register_password">At least 6 characters</string>
+    <string name="hint_register_phone">At least 10 digits</string>
+    <string name="action_register">Create Account</string>
+    <string name="register_login_prompt">Already has an account? <b><font fgcolor="#FFFFFFFF">Log in here</font></b></string>
+
+    <!-- Home / bottom navigation -->
+    <string name="nav_browse">Browse</string>
+    <string name="nav_my_rental">My Rental</string>
+    <string name="nav_profile">Profile</string>
+    <string name="guest">Guest</string>
+
+    <!-- Browse -->
+    <string name="browse_greeting">Hi, %1$s</string>
+    <string name="browse_title">Find your\nperfect ride.</string>
+    <string name="browse_featured_label">POPULAR THIS WEEK</string>
+    <string name="browse_featured_title">Toyota Avanza</string>
+    <string name="browse_featured_meta">From Rp350.000 / day</string>
+    <string name="action_view_detail">View details  ›</string>
+    <string name="filter_all">All</string>
+    <string name="filter_car">Car</string>
+    <string name="filter_motorcycle">Motorcycle</string>
+    <string name="browse_section_title">Available vehicles</string>
+    <string name="price_per_day">per day</string>
+    <string name="badge_rented_out">Rented out</string>
+    <string name="cd_open_detail">Open vehicle detail</string>
+    <string name="cd_featured_vehicle">Open Toyota Avanza details</string>
+    <string name="cd_featured_vehicle_image">Toyota Avanza</string>
+    <string name="cd_profile">Open profile</string>
+    <plurals name="vehicle_count">
+        <item quantity="one">%d unit</item>
+        <item quantity="other">%d units</item>
+    </plurals>
+
+    <!-- My Rental -->
+    <string name="my_rental_title">My Rentals</string>
+    <string name="my_rental_subtitle">Manage your active bookings.</string>
+    <string name="label_start_date">START DATE</string>
+    <string name="label_duration">DURATION</string>
+    <string name="label_new_duration">NEW DURATION (DAYS)</string>
+    <string name="hint_duration">e.g. 5</string>
+    <string name="status_active">Active</string>
+    <string name="status_completed">Completed</string>
+    <string name="action_update">Update</string>
+    <string name="action_close">Close</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="empty_rental_title">No active rentals</string>
+    <string name="empty_rental_body">Vehicles you rent will show up here.</string>
+    <string name="action_browse_vehicles">Browse vehicles</string>
+    <string name="error_duration_invalid">Duration must be a number and more than 0.</string>
+    <string name="rental_updated">Rental duration updated.</string>
+    <string name="cancel_rental_title">Cancel this rental?</string>
+    <string name="cancel_rental_message">Your %1$s rental will be removed permanently.</string>
+    <string name="cancel_rental_confirm">Cancel rental</string>
+    <string name="cancel_rental_keep">Keep it</string>
+    <string name="rental_cancelled">Rental cancelled.</string>
+    <plurals name="days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+
+    <!-- Profile -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_member">KarFlex member</string>
+    <string name="label_account">ACCOUNT</string>
+    <string name="action_rental_history">Rental History</string>
+    <string name="action_store_location">Store Location</string>
+    <string name="action_logout">Log Out</string>
+    <string name="logout_success">You have been logged out.</string>
+    <string name="app_version">KarFlex · Version 1.0</string>
+
+    <!-- Other pages (content not built yet) -->
+    <string name="title_otp">Verify OTP</string>
+    <string name="title_vehicle_detail">Vehicle Detail</string>
+    <string name="title_rental_history">Rental History</string>
+    <string name="title_store_location">Store Location</string>
+    <string name="action_continue">Continue</string>
+    <string name="error_login_first">Please log in first.</string>
 </resources>

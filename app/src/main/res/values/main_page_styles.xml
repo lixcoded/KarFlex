@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Home-only refinements, based on the existing KarFlex design system. -->
+    <style name="Widget.KarFlex.Main.Filter" parent="Widget.KarFlex.FilterPill">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="Widget.KarFlex.Main.RentalAction" parent="Widget.KarFlex.Button.Outlined">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+
+    <style name="Widget.KarFlex.Main.RentalCancel" parent="Widget.KarFlex.Button.Danger">
+        <item name="android:layout_height">48dp</item>
+        <item name="android:minWidth">0dp</item>
+    </style>
+</resources>

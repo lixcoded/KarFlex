@@ -2,4 +2,38 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- KarFlex monochrome palette -->
+    <color name="kf_black">#090A0C</color>
+    <color name="kf_surface">#15171A</color>
+    <color name="kf_surface_alt">#1C1F23</color>
+    <color name="kf_stroke">#292C31</color>
+    <color name="kf_stroke_strong">#3A3E45</color>
+    <color name="kf_divider">#1E2125</color>
+    <color name="kf_white">#FFFFFF</color>
+    <color name="kf_offwhite">#F1F1F1</color>
+    <color name="kf_hairline_light">#33FFFFFF</color>
+
+    <!-- Text on dark -->
+    <color name="kf_text_primary">#FFFFFF</color>
+    <color name="kf_text_secondary">#85878D</color>
+    <color name="kf_text_label">#9A9DA3</color>
+    <color name="kf_text_hint">#666970</color>
+    <color name="kf_text_link">#AEB1B7</color>
+
+    <!-- Text on light -->
+    <color name="kf_text_dark">#090A0C</color>
+    <color name="kf_text_dark_secondary">#6B6E75</color>
+    <color name="kf_stroke_light">#DADBDD</color>
+
+    <!-- Status -->
+    <color name="kf_red">#8B1D1D</color>
+    <color name="kf_red_stroke">#A82A2A</color>
+    <color name="kf_red_soft">#F2B8B8</color>
+    <color name="kf_red_text">#F87171</color>
+    <color name="kf_red_outline">#4A2023</color>
+    <color name="kf_green">#4ADE80</color>
+    <color name="kf_green_bg">#11261A</color>
+    <color name="kf_gray_status">#8A8D93</color>
+    <color name="kf_nav_inactive">#6B6E75</color>
 </resources>

@@ -1,9 +1,36 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.KarFlex" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Base application theme: always dark, black & white. -->
+    <style name="Base.Theme.KarFlex" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/kf_white</item>
+        <item name="colorOnPrimary">@color/kf_black</item>
+        <item name="colorPrimaryContainer">@color/kf_surface_alt</item>
+        <item name="colorOnPrimaryContainer">@color/kf_white</item>
+        <item name="colorSecondary">@color/kf_text_label</item>
+        <item name="colorOnSecondary">@color/kf_black</item>
+        <item name="colorSecondaryContainer">@color/kf_white</item>
+        <item name="colorOnSecondaryContainer">@color/kf_black</item>
+        <item name="colorSurface">@color/kf_black</item>
+        <item name="colorOnSurface">@color/kf_white</item>
+        <item name="colorOnSurfaceVariant">@color/kf_text_secondary</item>
+        <item name="colorOutline">@color/kf_stroke</item>
+        <item name="colorError">@color/kf_red_text</item>
+        <item name="android:colorBackground">@color/kf_black</item>
+        <item name="android:windowBackground">@color/kf_black</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.KarFlex.Dialog</item>
     </style>
 
     <style name="Theme.KarFlex" parent="Base.Theme.KarFlex" />
+
+    <style name="ThemeOverlay.KarFlex.Dialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/kf_surface</item>
+        <item name="colorSurfaceContainerHigh">@color/kf_surface</item>
+        <item name="colorOnSurface">@color/kf_white</item>
+        <item name="colorOnSurfaceVariant">@color/kf_text_secondary</item>
+        <item name="colorPrimary">@color/kf_white</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.KarFlex.Dialog</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.KarFlex.DialogButton.Danger</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.KarFlex.DialogButton</item>
+    </style>
 </resources>

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.telephony.SmsManager
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -34,6 +35,10 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_page)
+
+        setLightStatusBar(true)
+        findViewById<View>(R.id.loginHero).applySystemBarsPadding(top = true)
+        findViewById<View>(R.id.loginRoot).fitAboveKeyboard()
 
         databaseHelper = DatabaseHelper(this)
 
@@ -204,7 +209,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
 
-       //     openOtpPage()
+            openOtpPage()
 
         } catch (e: Exception) {
 
@@ -248,15 +253,15 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-//    private fun openOtpPage() {
-//
-//        val intent = Intent(
-//            this,
-//            OtpActivity::class.java
-//        )
-//
-//        startActivity(intent)
-//
-//        finish()
-//    }
+    private fun openOtpPage() {
+
+        val intent = Intent(
+            this,
+            OtpActivity::class.java
+        )
+
+        startActivity(intent)
+
+        finish()
+    }
 }
