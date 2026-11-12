@@ -29,6 +29,7 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
 
         view.findViewById<TextView>(R.id.tvAvatar).apply {
             text = username.take(1).uppercase()
+
             setOnClickListener {
                 (activity as? MainActivity)?.selectSection(R.id.nav_profile)
             }
@@ -37,7 +38,7 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
         tvVehicleCount = view.findViewById(R.id.tvVehicleCount)
 
         vehicleAdapter = VehicleAdapter { vehicle ->
-            openVehicle(vehicle.id)
+            openVehicle(vehicle)
         }
 
         view.findViewById<RecyclerView>(R.id.rvVehicles).apply {
@@ -46,10 +47,7 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
             itemAnimator = null
         }
 
-        // =========================
         // FILTER BY TYPE
-        // =========================
-
         filterViews = mapOf(
             view.findViewById<TextView>(R.id.filterAll) to null,
             view.findViewById<TextView>(R.id.filterCar) to Vehicle.TYPE_CAR,
@@ -74,11 +72,13 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
         loadVehicles()
     }
 
-    // Sections are shown/hidden instead of recreated, so refresh when shown again
-    // (a rental cancelled in My Rental frees the vehicle here).
+    // Refresh when Browse is shown again.
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
-        if (!hidden) loadVehicles()
+
+        if (!hidden) {
+            loadVehicles()
+        }
     }
 
     private fun loadVehicles() {
@@ -88,19 +88,44 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
             filterView.isSelected = type == selectedType
         }
 
-        // TODO: replace SampleData with DatabaseHelper (data fetched from JSON via Volley)
-        val vehicles = SampleData.vehicles(selectedType)
+        // Get currently rented vehicle IDs from SQLite.
+        val databaseHelper = DatabaseHelper(requireContext())
+        val rentedVehicleIds = databaseHelper.getRentedVehicleIds()
+
+        // Mark rented vehicles so VehicleAdapter can display them in red.
+        val vehicles = SampleData.vehicles(selectedType).map { vehicle ->
+            vehicle.copy(
+                isRented = vehicle.id in rentedVehicleIds
+            )
+        }
+
         vehicleAdapter.submitList(vehicles)
+
         tvVehicleCount.text =
-            resources.getQuantityString(R.plurals.vehicle_count, vehicles.size, vehicles.size)
+            resources.getQuantityString(
+                R.plurals.vehicle_count,
+                vehicles.size,
+                vehicles.size
+            )
     }
 
-    private fun openVehicle(vehicleId: Int) {
-        startActivity(
-            Intent(requireContext(), VehicleDetailActivity::class.java).apply {
-                putExtra(VehicleDetailActivity.EXTRA_VEHICLE_ID, vehicleId)
-            }
-        )
+    private fun openVehicle(vehicle: Vehicle) {
+        val intent = Intent(
+            requireContext(),
+            VehicleDetailActivity::class.java
+        ).apply {
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_ID, vehicle.id)
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_IMAGE, vehicle.imageRes)
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_BRAND, vehicle.brand)
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_MODEL, vehicle.modelName)
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_TYPE, vehicle.type)
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_TRANSMISSION, vehicle.transmission)
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_PRICE, vehicle.pricePerDay)
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_DESCRIPTION, vehicle.description)
+            putExtra(VehicleDetailActivity.EXTRA_VEHICLE_IS_RENTED, vehicle.isRented)
+        }
+
+        startActivity(intent)
     }
 
     private companion object {

@@ -26,6 +26,7 @@ class VehicleAdapter(
         val tvPrice: TextView = view.findViewById(R.id.tvPrice)
         val tvPriceUnit: TextView = view.findViewById(R.id.tvPriceUnit)
         val tvTransmission: TextView = view.findViewById(R.id.tvTransmission)
+        val btnViewDetails: View = view.findViewById(R.id.btnViewDetails)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleViewHolder {
@@ -44,7 +45,10 @@ class VehicleAdapter(
         holder.tvBrand.text = vehicle.brand
         holder.tvModelName.text = vehicle.modelName
         holder.tvPrice.text = vehicle.pricePerDay.toRupiah()
-        holder.tvTransmission.text = vehicle.transmission
+        holder.tvTransmission.text = context.getString(
+            R.string.transmission_format,
+            vehicle.transmission
+        )
 
         // Rented-out vehicles get a red card
         val rented = vehicle.isRented
@@ -62,7 +66,9 @@ class VehicleAdapter(
         holder.tvBrand.setTextColor(subtleText)
         holder.tvPriceUnit.setTextColor(subtleText)
 
-        holder.card.setOnClickListener { onVehicleClick(vehicle) }
+        holder.btnViewDetails.setOnClickListener {
+            onVehicleClick(vehicle)
+        }
     }
 
     private object DiffCallback : DiffUtil.ItemCallback<Vehicle>() {

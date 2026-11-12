@@ -1,17 +1,8 @@
 package com.example.karflex
 
-import java.time.LocalDate
-
-/**
- * TEMPORARY in-memory data so the Home page can be previewed before the
- * Vehicle / Rentals tables and the Volley JSON fetch are built.
- *
- * Vehicles are copied from karflex.json. Replace every call to this object
- * with DatabaseHelper queries once the database layer is ready.
- */
 object SampleData {
 
-    private val vehicles = listOf(
+    private val vehicleList = listOf(
         Vehicle(
             id = 1,
             modelName = "Honda Vario 160",
@@ -54,40 +45,12 @@ object SampleData {
         )
     )
 
-    private val rentals = mutableListOf(
-        Rental(
-            id = 1,
-            vehicle = vehicles[2],
-            userId = 1,
-            duration = 3,
-            startDate = LocalDate.now().minusDays(1).toString(),
-            status = Rental.STATUS_ACTIVE
-        )
-    )
-
-    // A vehicle counts as rented out while it has an Active rental.
-    fun vehicles(type: String? = null): List<Vehicle> =
-        vehicles
+    fun vehicles(type: String? = null): List<Vehicle> {
+        return vehicleList
             .filter { type == null || it.type == type }
-            .map { vehicle ->
-                vehicle.copy(
-                    isRented = rentals.any {
-                        it.vehicle.id == vehicle.id && it.status == Rental.STATUS_ACTIVE
-                    }
-                )
-            }
-
-    fun activeRentals(): List<Rental> =
-        rentals.filter { it.status == Rental.STATUS_ACTIVE }
-
-    fun updateDuration(rentalId: Int, duration: Int) {
-        val index = rentals.indexOfFirst { it.id == rentalId }
-        if (index != -1) {
-            rentals[index] = rentals[index].copy(duration = duration)
-        }
     }
 
-    fun deleteRental(rentalId: Int) {
-        rentals.removeAll { it.id == rentalId }
+    fun vehicleById(vehicleId: Int): Vehicle? {
+        return vehicleList.find { it.id == vehicleId }
     }
 }

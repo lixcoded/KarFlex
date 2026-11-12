@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
@@ -10,12 +11,60 @@
 
     <include layout="@layout/view_toolbar" />
 
-    <!-- TODO: search EditText + RecyclerView of all rentals (newest first, Active green / Completed gray). -->
-
-    <FrameLayout
-        android:id="@+id/content"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rental History"
+            android:textColor="@color/kf_white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+
+        <EditText
+            android:id="@+id/etSearchRental"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_search"
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawablePadding="12dp"
+            android:hint="Search vehicle..."
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/kf_white"
+            android:textColorHint="@color/kf_text_label"
+            android:textSize="14sp"
+            android:singleLine="true"
+            android:layout_marginBottom="20dp" />
+
+
+        <TextView
+            android:id="@+id/tvEmptyHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="No rental history found"
+            android:textColor="@color/kf_text_label"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:padding="24dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRentalHistory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="12dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

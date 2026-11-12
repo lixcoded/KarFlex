@@ -43,6 +43,7 @@
     <string name="filter_motorcycle">Motorcycle</string>
     <string name="browse_section_title">Available vehicles</string>
     <string name="price_per_day">per day</string>
+    <string name="transmission_format">Transmission: %1$s</string>
     <string name="badge_rented_out">Rented out</string>
     <string name="cd_open_detail">Open vehicle detail</string>
     <string name="cd_featured_vehicle">Open Toyota Avanza details</string>

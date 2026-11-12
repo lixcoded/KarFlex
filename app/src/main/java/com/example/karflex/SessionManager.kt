@@ -4,10 +4,9 @@ import android.content.Context
 import androidx.core.content.edit
 
 /**
- * Wraps the "KarFlexSession" SharedPreferences.
+ * Wraps the KarFlexSession SharedPreferences.
  *
- * LoginActivity stores the pending OTP data (otp_code / otp_username / otp_phone);
- * once the OTP step passes, [login] stores the signed-in user for the Home page.
+ * Stores pending OTP information and signed-in user information.
  */
 class SessionManager(context: Context) {
 
@@ -35,23 +34,40 @@ class SessionManager(context: Context) {
     val phone: String?
         get() = preferences.getString(KEY_PHONE, null)
 
+    // Save generated OTP temporarily
+    fun savePendingOtp(
+        otp: String,
+        username: String,
+        phone: String
+    ) {
+        preferences.edit {
+            putString(KEY_OTP_CODE, otp)
+            putString(KEY_OTP_USERNAME, username)
+            putString(KEY_OTP_PHONE, phone)
+        }
+    }
+
+    // Save logged-in user after successful OTP verification
     fun login(userId: Int, username: String, phone: String) {
         preferences.edit {
             putInt(KEY_USER_ID, userId)
             putString(KEY_USERNAME, username)
             putString(KEY_PHONE, phone)
             remove(KEY_OTP_CODE)
+            remove(KEY_OTP_USERNAME)
+            remove(KEY_OTP_PHONE)
         }
     }
 
     fun logout() {
-        preferences.edit { clear() }
+        preferences.edit {
+            clear()
+        }
     }
 
     companion object {
         const val PREF_NAME = "KarFlexSession"
 
-        // Written by LoginActivity
         const val KEY_OTP_CODE = "otp_code"
         const val KEY_OTP_USERNAME = "otp_username"
         const val KEY_OTP_PHONE = "otp_phone"
